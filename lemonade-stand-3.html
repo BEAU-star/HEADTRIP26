@@ -12,6 +12,7 @@
     --bg: #111110;
     --bg-card: #1c1c1b;
     --gold: #e8a93a;
+    --green: #6fcf97;
     --muted: #8a887f;
     --text: #f0ede6;
     --border: #2a2a28;
@@ -22,7 +23,7 @@
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
     min-height: 100vh;
-    padding: 0 0 40px;
+    padding: 0 0 48px;
   }
   header {
     padding: 24px 20px 16px;
@@ -63,51 +64,68 @@
     letter-spacing: 0.04em;
     line-height: 1;
   }
-  nav {
+  .drink-card {
+    padding: 20px 20px 0;
+    margin-bottom: 8px;
+  }
+  .drink-header {
     display: flex;
-    gap: 8px;
-    padding: 16px 20px;
-    overflow-x: auto;
-    scrollbar-width: none;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 4px;
   }
-  nav::-webkit-scrollbar { display: none; }
-  .pill {
-    flex-shrink: 0;
-    padding: 8px 16px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .pill.active {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: #111110;
-    font-weight: 500;
-  }
-  .drink-panel { display: none; padding: 0 20px; }
-  .drink-panel.active { display: block; }
   .drink-name {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2.2rem;
     color: var(--gold);
     letter-spacing: 0.02em;
-    margin-bottom: 4px;
+    line-height: 1;
   }
+  .badge-row {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+    padding-top: 6px;
+  }
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    padding: 3px 7px;
+    border-radius: 999px;
+    border: 1px solid;
+    text-transform: uppercase;
+  }
+  .badge-gf { color: var(--gold); border-color: var(--gold); }
+  .badge-v  { color: var(--green); border-color: var(--green); }
   .section-label {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
     letter-spacing: 0.15em;
     color: var(--muted);
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    margin-top: 14px;
   }
+  .ingredients {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 4px;
+  }
+  .ingredient-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .ingredient-row:last-child { border-bottom: none; }
+  .ing-name { color: var(--text); }
   .steps { display: flex; flex-direction: column; gap: 10px; }
   .step {
     background: var(--bg-card);
@@ -144,6 +162,36 @@
     color: var(--gold);
     font-weight: 600;
   }
+  .garnish-block {
+    background: var(--bg-card);
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 10px;
+  }
+  .garnish-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .garnish-desc {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .garnish-desc em {
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 20px 20px 0;
+  }
   footer {
     margin-top: 40px;
     text-align: center;
@@ -168,13 +216,11 @@
   </div>
 </header>
 
-<nav>
-  <button class="pill active" onclick="show('fresh', this)">Fresh Lemonade</button>
-  <button class="pill" onclick="show('strawberry', this)">Strawberry Lemonade</button>
-</nav>
-
-<div id="fresh" class="drink-panel active">
-  <div class="drink-name">Fresh Lemonade</div>
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-name">Fresh Lemonade</div>
+    <div class="badge-row"><span class="badge badge-gf">GF</span><span class="badge badge-v">V</span></div>
+  </div>
   <div class="section-label">Execution</div>
   <div class="steps">
     <div class="step">
@@ -207,9 +253,12 @@
     </div>
   </div>
 </div>
-
-<div id="strawberry" class="drink-panel">
-  <div class="drink-name">Strawberry Lemonade</div>
+<hr class="divider">
+<div class="drink-card">
+  <div class="drink-header">
+    <div class="drink-name">Strawberry Lemonade</div>
+    <div class="badge-row"><span class="badge badge-gf">GF</span><span class="badge badge-v">V</span></div>
+  </div>
   <div class="section-label">Execution</div>
   <div class="steps">
     <div class="step">
@@ -249,16 +298,7 @@
     </div>
   </div>
 </div>
-
 <footer>The Cocktail Initiative · Head Trip 2026</footer>
 
-<script>
-function show(id, btn) {
-  document.querySelectorAll('.drink-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
-}
-</script>
 </body>
 </html>
