@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artist Compound — Head Trip 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #111110; --bg-card: #1c1c1b; --gold: #e8a93a;
+  --muted: #8a887f; --text: #f0ede6; --border: #2a2a28;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; padding: 0 0 40px; }
+header { padding: 24px 20px 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; }
+.bar-name { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; color: var(--gold); line-height: 1; letter-spacing: 0.02em; }
+.event-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+.count-badge { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; text-align: right; line-height: 1.5; }
+.count-badge strong { display: block; font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--text); letter-spacing: 0.04em; line-height: 1; }
+nav { display: flex; gap: 8px; padding: 16px 20px; overflow-x: auto; scrollbar-width: none; }
+nav::-webkit-scrollbar { display: none; }
+.pill { flex-shrink: 0; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.15s; }
+.pill.active { background: var(--gold); border-color: var(--gold); color: #111110; font-weight: 500; }
+.drink-panel { display: none; padding: 0 20px; }
+.drink-panel.active { display: block; }
+.drink-name { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--gold); letter-spacing: 0.02em; margin-bottom: 4px; }
+.section-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; }
+.ingredients { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+.ingredient-row { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+.ingredient-row:last-child { border-bottom: none; }
+.ing-name { color: var(--text); }
+.steps { display: flex; flex-direction: column; gap: 10px; }
+.step { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; display: flex; gap: 14px; align-items: flex-start; }
+.step-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--gold); line-height: 1; min-width: 20px; }
+.step-body { flex: 1; }
+.step-type { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-bottom: 3px; }
+.step-desc { font-size: 0.95rem; line-height: 1.5; color: var(--text); }
+.step-desc em { font-style: normal; color: var(--gold); font-weight: 600; }
+.garnish-block { background: var(--bg-card); border: 1px solid var(--gold); border-radius: 10px; padding: 14px 16px; margin-top: 14px; }
+.garnish-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+.garnish-desc { font-size: 0.95rem; color: var(--text); line-height: 1.5; }
+.garnish-desc em { font-style: normal; color: var(--gold); font-weight: 600; }
+footer { margin-top: 40px; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="bar-name">Artist Compound</div>
+    <div class="event-tag">Head Trip '26</div>
+  </div>
+  <div class="count-badge">
+    <strong>2</strong>
+    cocktails on tap
+  </div>
+</header>
+<nav><button class="pill active" onclick="show('losing', this)">Losing It Lemonade</button><button class="pill" onclick="show('marg', this)">Classic Marg</button></nav>
+
+<div id="losing" class="drink-panel active">
+  <div class="drink-name">Losing It Lemonade</div>
+  <div class="section-label">Ingredients</div>
+  <div class="ingredients"><div class="ingredient-row"><span class="ing-name">Vodka</span></div><div class="ingredient-row"><span class="ing-name">CI Lemon Base</span></div><div class="ingredient-row"><span class="ing-name">Fresh Lemon Juice</span></div><div class="ingredient-row"><span class="ing-name">Strawberry Syrup</span></div><div class="ingredient-row"><span class="ing-name">Jalapeño Tincture</span></div></div>
+  <div class="section-label">Execution</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-type">Ice</div>
+        <div class="step-desc">Fill cup <em>FULL</em> with ice</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-type">Pour</div>
+        <div class="step-desc">Pour from tap to <em>¼ inch from the top</em></div>
+      </div>
+    </div></div>
+  
+  <div class="garnish-block">
+    <div class="garnish-label">Garnish</div>
+    <div class="garnish-desc"><em>Lemon wedge</em> &mdash; place on top with tongs; dust with <em>sumac</em></div>
+  </div>
+</div>
+<div id="marg" class="drink-panel">
+  <div class="drink-name">Classic Marg</div>
+  <div class="section-label">Ingredients</div>
+  <div class="ingredients"><div class="ingredient-row"><span class="ing-name">Tequila Blanco</span></div><div class="ingredient-row"><span class="ing-name">CI Marg Mix</span></div><div class="ingredient-row"><span class="ing-name">Fresh Lime</span></div></div>
+  <div class="section-label">Execution</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-type">Ice</div>
+        <div class="step-desc">Fill cup <em>FULL</em> with ice</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-type">Pour</div>
+        <div class="step-desc">Pour from tap to <em>¼ inch from the top</em></div>
+      </div>
+    </div></div>
+  
+  <div class="garnish-block">
+    <div class="garnish-label">Garnish</div>
+    <div class="garnish-desc"><em>Lime wedge</em> &mdash; place on top with tongs</div>
+  </div>
+</div>
+<footer>The Cocktail Initiative &middot; Head Trip 2026</footer>
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.drink-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
